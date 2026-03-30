@@ -1,0 +1,5 @@
+        // id - int , name - string , gpa - double
+        // define constructor of d student class
+        // define a method getGpa
+        // define method that prints full student details
+        // create student object based on the class and print details 
