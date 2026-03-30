@@ -3,6 +3,7 @@
 ## 🎯 START HERE
 
 **New to this course?** Read in this order:
+
 1. This file (you're reading it!)
 2. `README.md` - Course overview and schedule
 3. `00_START_HERE.md` - Getting started guide
@@ -13,8 +14,9 @@
 ## 📚 COMPLETE FILE STRUCTURE
 
 ### 🟢 DOCUMENTATION FILES (Read These First)
+
 ```
-00_START_HERE.md          ← Complete course guide + file descriptions  
+00_START_HERE.md          ← Complete course guide + file descriptions
 01_LEARNING_GUIDE.md      ← Original learning structure guide
 README.md                 ← Full course summary + next steps
 VISUAL_GUIDE.md           ← Diagrams, flowcharts, visual explanations
@@ -22,31 +24,33 @@ FILE_INDEX.md             ← This file (you are here!)
 ```
 
 ### 🔵 INTERFACE & FOUNDATION FILES (Study Details)
+
 ```
 Iterator.java             ← Iterator pattern interface (5 min read)
                            • hasNext(), next(), remove()
                            • When to use: Manual control over iteration
-                           
-Visitor.java              ← Visitor pattern interface (5 min read)  
+
+Visitor.java              ← Visitor pattern interface (5 min read)
                            • visit(Object), isDone()
                            • When to use: Same operation on many items
-                           
+
 Container.java            ← Container interface (5 min read)
                            • accept(Visitor), iterator(), add(), getCount()
                            • Unified interface for any data structure
-                           
+
 AbstractContainer.java    ← Base implementation (5 min read)
                            • Shared logic for isEmpty(), isFull()
                            • Template for subclasses
 ```
 
 ### 🟠 IMPLEMENTATION FILES (Learn How)
+
 ```
 ArrayContainer.java       ← Working container implementation (20 min study)
                            • Stores items in dynamic array
                            • Implements both Iterator and Visitor patterns
                            • Contains nested ArrayIterator class
-                           
+
 Visitors.java             ← Five visitor implementations (15 min read)
                            • PrintVisitor      - Print each element
                            • SumVisitor        - Accumulate sum
@@ -56,6 +60,7 @@ Visitors.java             ← Five visitor implementations (15 min read)
 ```
 
 ### 🟡 TUTORIAL & EXAMPLE FILES (Run These)
+
 ```
 PatternExamples.java      ← Interactive demo (10 min read, 5 min run)
                            • Shows 6 complete examples
@@ -63,7 +68,7 @@ PatternExamples.java      ← Interactive demo (10 min read, 5 min run)
                            • Visitor pattern usage
                            • All visitors in action
                            • Key insights at end
-                           
+
 ComprehensiveTest.java    ← Full test suite (5 min read, 10 min run)
                            • Test 1: Iterator Pattern
                            • Test 2: Visitor Pattern
@@ -73,22 +78,23 @@ ComprehensiveTest.java    ← Full test suite (5 min read, 10 min run)
 ```
 
 ### 🟢 PRACTICE PROBLEMS WITH SOLUTIONS
+
 ```
 PracticeProblems_Part1.java   ← 5 beginner-medium problems (30 min)
-                               
+
 PROBLEMS:
 1.1 - Print even numbers (Easy - Iterator basics)
       Learn: how Iterator gives you control
-      
+
 1.2 - Count all elements (Easy - Visitor basics)
       Learn: how Visitor maintains state
-      
+
 1.3 - Find first negative (Medium - Early exit optimization!)
       Learn: isDone() stops iteration early
-      
+
 1.4 - Collect even into new container (Medium - Transform)
       Learn: combine iteration with filtering
-      
+
 1.5 - Count unique elements (Medium - HashSet state)
       Learn: Visitor can use helper collections
 
@@ -98,21 +104,22 @@ PracticeProblems_Part2.java   ← 5 advanced problems (30 min)
 PROBLEMS:
 2.1 - Calculate average (Medium - Multiple state vars)
       Learn: track sum AND count together
-      
+
 2.2 - First match with criteria (Medium - Matcher interface)
       Learn: flexible visitor design with callbacks
-      
+
 2.3 - Transform all elements (Medium - Custom iteration)
       Learn: when Iterator is better choice
-      
+
 2.4 - Composite visitor (Hard - Multiple operations, one pass!)
       Learn: count+sum+max together for 3x speedup
-      
+
 2.5 - Remove during iteration (Hard - Safe removal)
       Learn: MUST use it.remove(), NOT container.remove()
 ```
 
 ### 🔴 EXAM PREPARATION FILES
+
 ```
 ExamPrep.java             ← Complete exam guide (15 min read)
                            • Quick concept review
@@ -122,7 +129,7 @@ ExamPrep.java             ← Complete exam guide (15 min read)
                            • Performance optimization strategies
                            • 10 must-know facts for exams
                            • Testing yourself review questions
-                           
+
 ExamCheatSheet.java       ← One-page reference (PRINTABLE!)
                            • Print this for exam!
                            • Iterator quick ref
@@ -131,7 +138,7 @@ ExamCheatSheet.java       ← One-page reference (PRINTABLE!)
                            • Code snippets
                            • Common mistakes
                            • Performance notes
-                           
+
 FinalRevision.java        ← 60-second cheat sheet (5 min read)
                            • Big picture summary
                            • Condensed concepts
@@ -141,6 +148,7 @@ FinalRevision.java        ← 60-second cheat sheet (5 min read)
 ```
 
 ### ⚠️ INCOMPLETE/PARTIAL FILES (Improved)
+
 ```
 SomeContainer.java        ← Original incomplete file (replaced/improved)
 ```
@@ -150,6 +158,7 @@ SomeContainer.java        ← Original incomplete file (replaced/improved)
 ## 📊 FILE USAGE BY PURPOSE
 
 ### If you want to UNDERSTAND the concepts:
+
 ```
 Iterator.java             ← Read comments explaining interface
 Visitor.java              ← Read comments explaining interface
@@ -157,6 +166,7 @@ Visitor.java              ← Read comments explaining interface
 ```
 
 ### If you want to SEE working code:
+
 ```
 ArrayContainer.java       ← Full working implementation
 Visitors.java             ← Five complete examples
@@ -164,6 +174,7 @@ Visitors.java             ← Five complete examples
 ```
 
 ### If you want to PRACTICE:
+
 ```
 PracticeProblems_Part1.java    ← Start here (5 problems)
 PracticeProblems_Part2.java    ← Then here (5 more)
@@ -171,6 +182,7 @@ PracticeProblems_Part2.java    ← Then here (5 more)
 ```
 
 ### If you're PREPARING FOR EXAM:
+
 ```
 FinalRevision.java             ← Start here (5 min)
 ExamCheatSheet.java            ← Print this (10 min)
@@ -178,6 +190,7 @@ ExamPrep.java                  ← Study this (15 min)
 ```
 
 ### If you're CONFUSED about something:
+
 ```
 VISUAL_GUIDE.md           ← Diagrams and flowcharts
 ExamPrep.java             ← Common mistakes section
@@ -188,23 +201,23 @@ PatternExamples.java      ← Real code examples
 
 ## ⏱️ FILE READING TIME ESTIMATES
 
-| File | Type | Time | Difficulty |
-|------|------|------|------------|
-| Iterator.java | Concept | 5 min | Easy |
-| Visitor.java | Concept | 5 min | Easy |
-| Container.java | Concept | 5 min | Easy |
-| AbstractContainer.java | Concept | 5 min | Easy |
-| ArrayContainer.java | Implementation | 20 min | Medium |
-| Visitors.java | Implementation | 15 min | Medium |
-| PatternExamples.java | Tutorial | 10 min | Medium |
-| ComprehensiveTest.java | Verification | 10 min | Easy |
-| PracticeProblems_Part1.java | Practice | 30 min | Medium |
-| PracticeProblems_Part2.java | Practice | 30 min | Hard |
-| ExamPrep.java | Reference | 15 min | Easy |
-| ExamCheatSheet.java | Reference | 10 min | Easy |
-| FinalRevision.java | Reference | 5 min | Easy |
-| VISUAL_GUIDE.md | Reference | 10 min | Medium |
-| README.md | Overview | 10 min | Easy |
+| File                        | Type           | Time   | Difficulty |
+| --------------------------- | -------------- | ------ | ---------- |
+| Iterator.java               | Concept        | 5 min  | Easy       |
+| Visitor.java                | Concept        | 5 min  | Easy       |
+| Container.java              | Concept        | 5 min  | Easy       |
+| AbstractContainer.java      | Concept        | 5 min  | Easy       |
+| ArrayContainer.java         | Implementation | 20 min | Medium     |
+| Visitors.java               | Implementation | 15 min | Medium     |
+| PatternExamples.java        | Tutorial       | 10 min | Medium     |
+| ComprehensiveTest.java      | Verification   | 10 min | Easy       |
+| PracticeProblems_Part1.java | Practice       | 30 min | Medium     |
+| PracticeProblems_Part2.java | Practice       | 30 min | Hard       |
+| ExamPrep.java               | Reference      | 15 min | Easy       |
+| ExamCheatSheet.java         | Reference      | 10 min | Easy       |
+| FinalRevision.java          | Reference      | 5 min  | Easy       |
+| VISUAL_GUIDE.md             | Reference      | 10 min | Medium     |
+| README.md                   | Overview       | 10 min | Easy       |
 
 **Total: ~160 minutes (~2.7 hours)**
 
@@ -213,6 +226,7 @@ PatternExamples.java      ← Real code examples
 ## 🎯 THREE LEARNING PATHS
 
 ### 🏃 FAST TRACK (45 min - Before exam, need quick review)
+
 ```
 1. FinalRevision.java (5 min)
 2. PatternExamples.java (10 min - read code)
@@ -224,6 +238,7 @@ OUTCOME: Ready for exam!
 ```
 
 ### 🚶 STANDARD TRACK (2 hours - Thorough understanding)
+
 ```
 1. Iterator.java (5 min)
 2. Visitor.java (5 min)
@@ -238,6 +253,7 @@ OUTCOME: Confident and ready!
 ```
 
 ### 🏔️ MOUNTAIN PEAK TRACK (4 hours - Master level)
+
 ```
 1. All concept files (20 min)
 2. ArrayContainer.java detailed study (25 min)
@@ -258,6 +274,7 @@ OUTCOME: Expert mastery!
 ## 🧭 RELATED DOCUMENTATION
 
 These files explain the structure:
+
 - `00_START_HERE.md` - First read after this
 - `README.md` - Complete course overview
 - `VISUAL_GUIDE.md` - Diagrams and flowcharts
@@ -270,6 +287,7 @@ These files explain the structure:
 After reading all files and doing problems, you should:
 
 ### UNDERSTANDING:
+
 - [ ] Explain Iterator pattern in one sentence
 - [ ] Explain Visitor pattern in one sentence
 - [ ] Know 3 cases when to use Iterator
@@ -277,24 +295,28 @@ After reading all files and doing problems, you should:
 - [ ] Understand why separation matters
 
 ### CODING:
+
 - [ ] Write a custom Visitor from memory
 - [ ] Use Iterator to traverse container
 - [ ] Implement safe removal with Iterator
 - [ ] Recognize both patterns in code
 
 ### DEBUGGING:
+
 - [ ] Spot isDone() bugs
 - [ ] Find type casting mistakes
 - [ ] Identify state management issues
 - [ ] Fix iteration errors
 
 ### OPTIMIZATION:
+
 - [ ] Explain early exit with isDone()
 - [ ] Design composite visitors
 - [ ] Predict when optimization matters
 - [ ] Estimate performance impact
 
 ### MASTERY:
+
 - [ ] Teach concept to someone else
 - [ ] Answer tricky questions
 - [ ] Review others' code
@@ -330,28 +352,34 @@ After reading all files and doing problems, you should:
 ## 📞 FILE-SPECIFIC TIPS
 
 ### When reading Iterator.java
+
 → Focus on comments, not just interface
 → Understand the CONTRACT (what must be true when methods are called)
 
 ### When reading Visitor.java
+
 → Notice how visit() is called repeatedly
 → Understand isDone() is the KEY to optimization
 
 ### When reading ArrayContainer.java
+
 → Trace through methods line by line
 → Understand why nested ArrayIterator class?
 
 ### When reading Visitors.java
+
 → Copy first visitor as template
 → Modify to create your own visitor
 
 ### When reading practice problems
+
 → DO NOT look at solution first
 → Try yourself (struggle is good!)
 → THEN check solution
 → Understand why their way is better
 
 ### When reading ExamCheatSheet.java
+
 → Print it out
 → Keep it visible during study
 → Use during exam prep
@@ -361,6 +389,7 @@ After reading all files and doing problems, you should:
 ## ✅ SUCCESS METRICS
 
 Track your progress:
+
 - [ ] Read all concept files (15 min)
 - [ ] Study implementation (35 min)
 - [ ] Complete 3 practice problems (45 min)

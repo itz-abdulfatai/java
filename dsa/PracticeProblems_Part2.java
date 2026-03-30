@@ -87,7 +87,7 @@ public class AverageVisitor implements Visitor {
     private long sum = 0;
     private int count = 0; // Only count numeric items
     private boolean done = false;
-    
+
     @Override
     public void visit(Object object) {
         if (object instanceof Number) {
@@ -96,12 +96,12 @@ public class AverageVisitor implements Visitor {
             count++;
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done;
     }
-    
+
     public double getAverage() {
         if (count == 0) {
             return 0.0; // No numeric elements
@@ -128,54 +128,54 @@ public class AverageVisitor implements Visitor {
  * FLEXIBILITY: Define criteria when creating visitor
  */
 public class FirstMatchVisitor implements Visitor {
-    
+
     // Interface: How to decide if object matches
     public interface Matcher {
         boolean matches(Object obj);
     }
-    
+
     private Matcher matcher;
     private Object found = null;
     private boolean done = false;
-    
+
     public FirstMatchVisitor(Matcher matcher) {
         this.matcher = matcher;
     }
-    
+
     @Override
     public void visit(Object object) {
         // If already found something, don't visit anymore
         if (done) {
             return;
         }
-        
+
         // Check if this object matches criteria
         if (matcher.matches(object)) {
             found = object;
             done = true; // Signal container to stop!
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done;
     }
-    
+
     public Object getFound() {
         return found;
     }
-    
+
     public boolean isFound() {
         return found != null;
     }
-    
+
     // USAGE EXAMPLE:
     public static void main(String[] args) {
         ArrayContainer container = new ArrayContainer();
         for (int i = 5; i <= 25; i += 5) {
             container.add(i);
         }
-        
+
         // Find first number > 15
         FirstMatchVisitor.Matcher matcher = obj -> {
             if (obj instanceof Integer) {
@@ -184,10 +184,10 @@ public class FirstMatchVisitor implements Visitor {
             }
             return false;
         };
-        
+
         FirstMatchVisitor visitor = new FirstMatchVisitor(matcher);
         container.accept(visitor);
-        
+
         if (visitor.isFound()) {
             System.out.println("First match: " + visitor.getFound());
             // Expected: 20
@@ -217,7 +217,7 @@ public class FirstMatchVisitor implements Visitor {
 public class DoubleAllNumbers {
     public static Container doubleAll(Container source) {
         ArrayContainer result = new ArrayContainer();
-        
+
         Iterator it = source.iterator();
         while (it.hasNext()) {
             Object obj = it.next();
@@ -227,7 +227,7 @@ public class DoubleAllNumbers {
                 result.add(num * 2);
             }
         }
-        
+
         return result;
     }
 }
@@ -255,24 +255,24 @@ public class DoubleAllNumbers {
  * - All operations use same traversal
  */
 public class CompositeStatsVisitor implements Visitor {
-    
+
     // Three different statistics maintained simultaneously
     private int count = 0;
     private long sum = 0;
     private Comparable max = null;
     private boolean done = false;
-    
+
     @Override
     public void visit(Object object) {
         // OPERATION 1: Count
         count++;
-        
+
         // OPERATION 2: Sum (only numbers)
         if (object instanceof Number) {
             Number num = (Number) object;
             sum += num.longValue();
         }
-        
+
         // OPERATION 3: Find max (only comparables)
         if (object instanceof Comparable) {
             Comparable comparable = (Comparable) object;
@@ -281,17 +281,25 @@ public class CompositeStatsVisitor implements Visitor {
             }
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done;
     }
-    
+
     // GETTERS for all three results
-    public int getCount() { return count; }
-    public long getSum() { return sum; }
-    public Comparable getMax() { return max; }
-    
+    public int getCount() {
+        return count;
+    }
+
+    public long getSum() {
+        return sum;
+    }
+
+    public Comparable getMax() {
+        return max;
+    }
+
     public void printStats() {
         System.out.println("Count: " + count);
         System.out.println("Sum: " + sum);
@@ -319,43 +327,43 @@ public class CompositeStatsVisitor implements Visitor {
  * - Contracts: call next() first, then remove()
  * 
  * PATTERN:
- *   while (hasNext()) {
- *       if (shouldDelete(next())) {
- *           remove();  // ← Must use iterator's remove
- *       }
- *   }
+ * while (hasNext()) {
+ * if (shouldDelete(next())) {
+ * remove(); // ← Must use iterator's remove
+ * }
+ * }
  */
 public class RemoveEvenNumbers {
     public static void removeAllEven(Container container) {
         Iterator it = container.iterator();
-        
+
         while (it.hasNext()) {
             Object obj = it.next();
-            
+
             if (obj instanceof Integer) {
                 Integer num = (Integer) obj;
-                
-                if (num % 2 == 0) {  // If even
-                    it.remove();      // Safe removal!
+
+                if (num % 2 == 0) { // If even
+                    it.remove(); // Safe removal!
                 }
             }
         }
     }
-    
+
     // TEST EXAMPLE:
     public static void main(String[] args) {
         ArrayContainer container = new ArrayContainer();
         for (int i = 1; i <= 6; i++) {
             container.add(i);
         }
-        
+
         System.out.println("Before: " + container.getCount() + " elements");
-        
+
         removeAllEven(container);
-        
+
         System.out.println("After: " + container.getCount() + " elements");
         // Expected: Before = 6, After = 3
-        
+
         // Print remaining (should be 1, 3, 5)
         Iterator it = container.iterator();
         System.out.println("Remaining:");

@@ -49,20 +49,20 @@ import java.util.NoSuchElementException;
  * 3. Understand how Visitor traverses all elements
  */
 public class ArrayContainer extends AbstractContainer {
-    
+
     // ===== INTERNAL DATA STRUCTURE =====
     // Hidden from users - they don't care about this!
     private Object[] items;
     private static final int DEFAULT_CAPACITY = 10;
-    
+
     // ===== CONSTRUCTOR =====
     public ArrayContainer() {
         items = new Object[DEFAULT_CAPACITY];
         count = 0; // Initially empty
     }
-    
+
     // ===== CORE CONTAINER OPERATIONS =====
-    
+
     /**
      * ADD AN ITEM (basic operation all containers need)
      */
@@ -76,7 +76,7 @@ public class ArrayContainer extends AbstractContainer {
         items[count] = item;
         count++;
     }
-    
+
     /**
      * REMOVE ALL ITEMS
      * Implementation: Just reset count and clear array to allow garbage collection
@@ -89,9 +89,9 @@ public class ArrayContainer extends AbstractContainer {
         }
         count = 0;
     }
-    
+
     // ===== ITERATOR PATTERN =====
-    
+
     /**
      * Return an iterator for this container
      * User can then safely traverse without touching our internal array
@@ -100,7 +100,7 @@ public class ArrayContainer extends AbstractContainer {
     public Iterator iterator() {
         return new ArrayIterator();
     }
-    
+
     /**
      * PRIVATE nested class: ArrayIterator
      * 
@@ -112,13 +112,13 @@ public class ArrayContainer extends AbstractContainer {
      */
     private class ArrayIterator implements Iterator {
         private int position = 0; // Current position in array
-        
+
         @Override
         public boolean hasNext() {
             // Are there more elements after current position?
             return position < count;
         }
-        
+
         @Override
         public Object next() {
             // Check boundary
@@ -128,7 +128,7 @@ public class ArrayContainer extends AbstractContainer {
             // Return current element and advance position
             return items[position++];
         }
-        
+
         @Override
         public void remove() {
             // Remove last returned element (position-1)
@@ -144,9 +144,9 @@ public class ArrayContainer extends AbstractContainer {
             position--; // Adjust position since we removed an element
         }
     }
-    
+
     // ===== VISITOR PATTERN =====
-    
+
     /**
      * Accept a visitor and have it process all elements
      * 
@@ -168,7 +168,7 @@ public class ArrayContainer extends AbstractContainer {
             }
         }
     }
-    
+
     /**
      * Helper: Get element at index (for testing)
      */

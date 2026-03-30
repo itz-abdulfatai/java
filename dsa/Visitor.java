@@ -12,7 +12,8 @@ package dsa;
  * 
  * REAL-WORLD ANALOGY:
  * - No Visitor: Each hotel room must have cleaning, maintenance, security staff
- * - With Visitor: One contractor visits the room with different skills as needed
+ * - With Visitor: One contractor visits the room with different skills as
+ * needed
  * 
  * WHY IT MATTERS:
  * Want to add "print" operation? Create PrintVisitor.
@@ -22,7 +23,7 @@ package dsa;
  * KEY PRINCIPLE: Let visitors come TO the data, not data going everywhere.
  */
 public interface Visitor {
-    
+
     /**
      * TECHNICAL: Process a single object
      * 
@@ -36,7 +37,7 @@ public interface Visitor {
      * This is called the "double dispatch" technique
      */
     void visit(Object object);
-    
+
     /**
      * TECHNICAL: Signal when to stop visiting
      * 

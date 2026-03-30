@@ -19,7 +19,7 @@ package dsa;
  * without changing code that uses containers!
  */
 public interface Container {
-    
+
     /** Get number of elements currently in container */
     int getCount();
 

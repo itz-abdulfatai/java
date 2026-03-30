@@ -282,18 +282,8 @@ package dsa;
  * Object item = it.next();  // Could be null!
  * 
  * HANDLING:
- * if (item == null) { /* handle null */ }
- * 
- * 
- * EDGE CASE 5: Container with mixed types
- * ───────────────────────────────────────
- * container.add(5);
- * container.add("hello");
- * container.add(3.14);
- * 
- * Visitor visit order: Integer, String, Double
- * Must handle each type or use instanceof checks
- */
+ * if (item == null) { /* handle null */
+}***EDGE CASE 5:Container with mixed types*───────────────────────────────────────*container.add(5);*container.add("hello");*container.add(3.14);**Visitor visit order:Integer,String,Double*Must handle each type or use instanceof checks*/
 
 /**
  * ============ PART 6: PERFORMANCE TIPS ============
@@ -345,57 +335,57 @@ package dsa;
  * THINGS YOU MUST KNOW:
  * 
  * 1. Iterator Contract:
- *    boolean hasNext();
- *    Object next();
- *    void remove();
+ * boolean hasNext();
+ * Object next();
+ * void remove();
  * 
  * 2. Visitor Contract:
- *    void visit(Object);
- *    boolean isDone();
+ * void visit(Object);
+ * boolean isDone();
  * 
  * 3. Container Methods:
- *    void accept(Visitor)
- *    Iterator iterator()
- *    int getCount()
- *    void add(Object)
- *    void purge()
+ * void accept(Visitor)
+ * Iterator iterator()
+ * int getCount()
+ * void add(Object)
+ * void purge()
  * 
  * 4. When Iterator? When Visitor?
- *    → If you need control: Iterator
- *    → If same job on many: Visitor
+ * → If you need control: Iterator
+ * → If same job on many: Visitor
  * 
  * 5. Early Exit Pattern:
- *    → In visitor: set done=true in isDone()
- *    → Container checks isDone() after each visit
- *    → If true, stops iteration
- *    → HUGE optimization!
+ * → In visitor: set done=true in isDone()
+ * → Container checks isDone() after each visit
+ * → If true, stops iteration
+ * → HUGE optimization!
  * 
  * 6. Safe Removal:
- *    → Only use it.remove()
- *    → Never modify container in loop
- *    → Always call next() before remove()
+ * → Only use it.remove()
+ * → Never modify container in loop
+ * → Always call next() before remove()
  * 
  * 7. Type Checking:
- *    → Always use instanceof before casting
- *    → Never assume type of objects
- *    → Container can hold mixed types!
+ * → Always use instanceof before casting
+ * → Never assume type of objects
+ * → Container can hold mixed types!
  * 
  * 8. State Accumulation:
- *    → Instance variables = persist across visits
- *    → Local variables = reset each method call
- *    → Use instance vars for Visitor state!
+ * → Instance variables = persist across visits
+ * → Local variables = reset each method call
+ * → Use instance vars for Visitor state!
  * 
  * 9. Open/Closed Principle:
- *    → Add operations (new Visitors)
- *    → Don't modify Container/Iterator
- *    → Container closed for modification
- *    → Open for extension (new Visitors)
+ * → Add operations (new Visitors)
+ * → Don't modify Container/Iterator
+ * → Container closed for modification
+ * → Open for extension (new Visitors)
  * 
  * 10. Performance Mindset:
- *     → Normal approach often O(n)
- *     → With isDone(): can be O(1) to O(n/2)
- *     → Think big: 1M+ items?
- *     → Then performance matters!
+ * → Normal approach often O(n)
+ * → With isDone(): can be O(1) to O(n/2)
+ * → Think big: 1M+ items?
+ * → Then performance matters!
  * 
  * ====================================
  * 

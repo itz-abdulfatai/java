@@ -95,16 +95,16 @@ public class PrintEvenNumbersSolution {
     public static void printEvenNumbers(Container container) {
         // STEP 1: Get the iterator (safe traversal mechanism)
         Iterator it = container.iterator();
-        
+
         // STEP 2: Loop through all elements
         while (it.hasNext()) {
             // STEP 3: Get next element
             Object obj = it.next();
-            
+
             // STEP 4: Check if even (type-safe)
             if (obj instanceof Integer) {
                 Integer num = (Integer) obj;
-                if (num % 2 == 0) {  // Even number
+                if (num % 2 == 0) { // Even number
                     System.out.println(num);
                 }
             }
@@ -131,33 +131,33 @@ public class PrintEvenNumbersSolution {
  */
 public class CountElementsVisitor implements Visitor {
     private int count = 0;
-    
+
     @Override
     public void visit(Object object) {
         // Every visit = one element
         count++;
     }
-    
+
     @Override
     public boolean isDone() {
         // Never stop early - count everything
         return false;
     }
-    
+
     public int getCount() {
         return count;
     }
-    
+
     // USAGE EXAMPLE:
     public static void main(String[] args) {
         ArrayContainer container = new ArrayContainer();
         container.add(1);
         container.add(2);
         container.add(3);
-        
+
         CountElementsVisitor counter = new CountElementsVisitor();
         container.accept(counter);
-        
+
         System.out.println("Total elements: " + counter.getCount());
         // Expected: 3
     }
@@ -189,7 +189,7 @@ public class CountElementsVisitor implements Visitor {
 public class FindFirstNegativeVisitor implements Visitor {
     private Integer found = null;
     private boolean done = false;
-    
+
     @Override
     public void visit(Object object) {
         if (object instanceof Integer) {
@@ -200,12 +200,12 @@ public class FindFirstNegativeVisitor implements Visitor {
             }
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done;
     }
-    
+
     public Integer getFound() {
         return found;
     }
@@ -231,14 +231,14 @@ public class CollectEvenNumbers {
     public static Container collectEvenNumbers(Container source) {
         // Create new container for results
         ArrayContainer result = new ArrayContainer();
-        
+
         // STEP 1: Get iterator from source
         Iterator it = source.iterator();
-        
+
         // STEP 2: Iterate through source
         while (it.hasNext()) {
             Object obj = it.next();
-            
+
             // STEP 3: Filter - only even numbers
             if (obj instanceof Integer) {
                 Integer num = (Integer) obj;
@@ -248,22 +248,22 @@ public class CollectEvenNumbers {
                 }
             }
         }
-        
+
         return result;
     }
-    
+
     // TEST EXAMPLE:
     public static void main(String[] args) {
         ArrayContainer source = new ArrayContainer();
         for (int i = 1; i <= 6; i++) {
             source.add(i);
         }
-        
+
         Container evenOnly = collectEvenNumbers(source);
         System.out.println("Original count: " + source.getCount());
         System.out.println("Even only count: " + evenOnly.getCount());
         // Expected: Original = 6, Even = 3 (contains 2, 4, 6)
-        
+
         // Print the even numbers
         Iterator it = evenOnly.iterator();
         while (it.hasNext()) {
@@ -282,8 +282,8 @@ public class CollectEvenNumbers {
  * 
  * ALGORITHM:
  * 1. For each element visited:
- *    - Check if already in set
- *    - If not, add to set
+ * - Check if already in set
+ * - If not, add to set
  * 2. After all visits, return set size
  * 
  * TIME COMPLEXITY: O(n) - one visit per element
@@ -297,7 +297,7 @@ public class CollectEvenNumbers {
 public class CountUniqueElementsVisitor implements Visitor {
     private Set<Object> uniqueElements = new HashSet<>();
     private boolean done = false;
-    
+
     @Override
     public void visit(Object object) {
         // HashSet handles duplicates automatically
@@ -306,35 +306,35 @@ public class CountUniqueElementsVisitor implements Visitor {
             uniqueElements.add(object);
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done; // Count everything
     }
-    
+
     public int getUniqueCount() {
         return uniqueElements.size();
     }
-    
+
     public Set<Object> getUniqueElements() {
         return uniqueElements;
     }
-    
+
     // TEST EXAMPLE:
     public static void main(String[] args) {
         ArrayContainer container = new ArrayContainer();
-        
+
         // Add with duplicates: [1, 2, 3, 2, 1, 5]
-        Integer[] data = {1, 2, 3, 2, 1, 5};
+        Integer[] data = { 1, 2, 3, 2, 1, 5 };
         for (Integer num : data) {
             container.add(num);
         }
-        
+
         CountUniqueElementsVisitor uniqueCounter = new CountUniqueElementsVisitor();
         container.accept(uniqueCounter);
-        
-        System.out.println("Total elements: " + container.getCount());  // 6
-        System.out.println("Unique elements: " + uniqueCounter.getUniqueCount());  // 4
-        System.out.println("Unique set: " + uniqueCounter.getUniqueElements());  // {1, 2, 3, 5}
+
+        System.out.println("Total elements: " + container.getCount()); // 6
+        System.out.println("Unique elements: " + uniqueCounter.getUniqueCount()); // 4
+        System.out.println("Unique set: " + uniqueCounter.getUniqueElements()); // {1, 2, 3, 5}
     }
 }

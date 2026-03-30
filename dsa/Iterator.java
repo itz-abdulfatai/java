@@ -18,7 +18,7 @@ package dsa;
  * If you change from Array → LinkedList internally, users' code still works!
  */
 public interface Iterator {
-    
+
     /**
      * TECHNICAL: Check if there are more elements to process
      * 
@@ -26,7 +26,7 @@ public interface Iterator {
      * Key point: Allows safe boundary checking
      */
     boolean hasNext();
-    
+
     /**
      * TECHNICAL: Get the next element and advance cursor
      * 
@@ -35,7 +35,7 @@ public interface Iterator {
      * Exception: NoSuchElementException if no next element
      */
     Object next();
-    
+
     /**
      * TECHNICAL: Remove the last element returned by next()
      * 

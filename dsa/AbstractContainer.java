@@ -15,7 +15,7 @@ package dsa;
  * But WHAT operations do is same for all!
  */
 public abstract class AbstractContainer implements Container {
-    
+
     /** Instance variable: Track how many items are stored */
     protected int count;
 
@@ -45,7 +45,7 @@ public abstract class AbstractContainer implements Container {
     /** Subclass must implement: how to iterate through its elements */
     @Override
     public abstract Iterator iterator();
-    
+
     /** Subclass must implement: how to let visitors process elements */
     @Override
     public abstract void accept(Visitor v);

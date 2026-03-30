@@ -135,7 +135,7 @@ Implementations:
 ├─ PrintVisitor
 │  └─ Prints each element
 │
-├─ SumVisitor  
+├─ SumVisitor
 │  ├─ Accumulates sum
 │  └─ Returns sum
 │
@@ -197,17 +197,19 @@ Implementations:
 ### Scenario: Sum, Count, Max from same container
 
 **Approach 1: Multiple Visitors (3 passes)**
+
 ```
 Container size: 1,000,000 items
 
 Pass 1: container.accept(sumVisitor)      → 1M operations
-Pass 2: container.accept(countVisitor)    → 1M operations  
+Pass 2: container.accept(countVisitor)    → 1M operations
 Pass 3: container.accept(maxVisitor)      → 1M operations
                                             ─────────────
 Total:                                      3M operations
 ```
 
 **Approach 2: Composite Visitor (1 pass)**
+
 ```
 Container size: 1,000,000 items
 
@@ -229,6 +231,7 @@ Total:                                      1M operations
 ### Scenario: Find first number > 1000 in 1,000,000 numbers
 
 **Without isDone() (finds at position 50)**
+
 ```
 Container size: 1,000,000 items
 Target: First item > 1000
@@ -283,24 +286,24 @@ Easy to add new operations ✓
 
 ## 9️⃣ WHEN TO USE EACH PATTERN
 
-| Pattern | When | Example | Code Complexity |
-|---------|------|---------|-----------------|
-| Iterator | Need manual control | For loop with conditions | Low |
-| Visitor | Same operation many times | Sum all items | Medium |
-| Composite | Multiple operations | Sum + Count + Max | Medium |
-| Early Exit | Large dataset + search | Find first match | Medium |
+| Pattern    | When                      | Example                  | Code Complexity |
+| ---------- | ------------------------- | ------------------------ | --------------- |
+| Iterator   | Need manual control       | For loop with conditions | Low             |
+| Visitor    | Same operation many times | Sum all items            | Medium          |
+| Composite  | Multiple operations       | Sum + Count + Max        | Medium          |
+| Early Exit | Large dataset + search    | Find first match         | Medium          |
 
 ---
 
 ## 🔟 COMMON BUGS VS FIXES
 
-| Bug | Problem | Fix |
-|-----|---------|-----|
-| isDone() always false | Visits everything | Return true when condition met |
-| Local var in visitor | State resets | Use instance variables |
-| it.remove() no next() | Undefined behavior | Always call next() first |
-| Modify during iteration | Index corruption | Use only it.remove() |
-| No type checking | ClassCastException | Always use instanceof |
+| Bug                     | Problem            | Fix                            |
+| ----------------------- | ------------------ | ------------------------------ |
+| isDone() always false   | Visits everything  | Return true when condition met |
+| Local var in visitor    | State resets       | Use instance variables         |
+| it.remove() no next()   | Undefined behavior | Always call next() first       |
+| Modify during iteration | Index corruption   | Use only it.remove()           |
+| No type checking        | ClassCastException | Always use instanceof          |
 
 ---
 

@@ -20,26 +20,26 @@ package dsa;
  * Container has: [5, 10, 15, 20]
  * 
  * Traditional way:
- *   for (int i = 0; i < array.length; i++) {
- *       System.out.println(array[i]);
- *   }
+ * for (int i = 0; i < array.length; i++) {
+ * System.out.println(array[i]);
+ * }
  * 
  * Visitor way:
- *   container.accept(new PrintVisitor());
+ * container.accept(new PrintVisitor());
  * 
  * BENEFIT: Container code never changes.
  * Want to print with different format? New PrintVisitor variant!
  */
 public class PrintVisitor implements Visitor {
-    
+
     private boolean done = false;
-    
+
     @Override
     public void visit(Object object) {
         // Simple: just print the object
         System.out.println(object);
     }
-    
+
     @Override
     public boolean isDone() {
         // Never stop early - print everything
@@ -65,10 +65,10 @@ public class PrintVisitor implements Visitor {
  * - Shows how to retrieve result after visit completes
  */
 public class SumVisitor implements Visitor {
-    
+
     private long sum = 0; // Accumulator
     private boolean done = false;
-    
+
     @Override
     public void visit(Object object) {
         // Type check: only sum if it's a Number
@@ -78,13 +78,13 @@ public class SumVisitor implements Visitor {
         }
         // If not a number, skip it (ignore silently)
     }
-    
+
     @Override
     public boolean isDone() {
         // Never stop early - need to sum ALL numbers
         return done;
     }
-    
+
     /**
      * RETRIEVAL: After visitor completes, caller can get result
      * This is the "result extraction" pattern
@@ -115,15 +115,15 @@ public class SumVisitor implements Visitor {
  * Average: O(n/2) - found somewhere in middle
  */
 public class SearchVisitor implements Visitor {
-    
+
     private Object target; // What we're looking for
     private Object found = null; // What we found (if anything)
     private boolean done = false; // Stop when found
-    
+
     public SearchVisitor(Object target) {
         this.target = target;
     }
-    
+
     @Override
     public void visit(Object object) {
         // Check if this object matches our target
@@ -132,16 +132,16 @@ public class SearchVisitor implements Visitor {
             done = true; // Signal container to stop!
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done;
     }
-    
+
     public Object getFound() {
         return found;
     }
-    
+
     public boolean isFound() {
         return found != null;
     }
@@ -160,20 +160,20 @@ public class SearchVisitor implements Visitor {
  * PATTERN: Strategy pattern inside Visitor!
  */
 public class CountVisitor implements Visitor {
-    
+
     private int count = 0;
     private CountCriteria criteria;
     private boolean done = false;
-    
+
     // Interface: How to judge if an item should be counted
     public interface CountCriteria {
         boolean matches(Object object);
     }
-    
+
     public CountVisitor(CountCriteria criteria) {
         this.criteria = criteria;
     }
-    
+
     @Override
     public void visit(Object object) {
         // Use criteria to decide if count this object
@@ -181,12 +181,12 @@ public class CountVisitor implements Visitor {
             count++;
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done; // Usually count everything
     }
-    
+
     public int getCount() {
         return count;
     }
@@ -209,15 +209,15 @@ public class CountVisitor implements Visitor {
  * Returns null if container is empty
  */
 public class FindMaxVisitor implements Visitor {
-    
+
     private Comparable max = null;
     private boolean done = false;
-    
+
     @Override
     public void visit(Object object) {
         if (object instanceof Comparable) {
             Comparable comparable = (Comparable) object;
-            
+
             // First element is always the max so far
             if (max == null) {
                 max = comparable;
@@ -230,12 +230,12 @@ public class FindMaxVisitor implements Visitor {
             }
         }
     }
-    
+
     @Override
     public boolean isDone() {
         return done; // Visit everything to find true maximum
     }
-    
+
     public Comparable getMax() {
         return max;
     }

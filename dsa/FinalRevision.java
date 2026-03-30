@@ -289,29 +289,29 @@ package dsa;
  * ════════════════════════════════════════════════════════
  * 
  * Iterator:
- *   hasNext() → any more?
- *   next() → get next
- *   remove() → delete current
+ * hasNext() → any more?
+ * next() → get next
+ * remove() → delete current
  * 
  * Visitor:
- *   visit(obj) → process this
- *   isDone() → shall we stop?
+ * visit(obj) → process this
+ * isDone() → shall we stop?
  * 
  * When:
- *   Custom control? → Iterator
- *   Same operation? → Visitor
- *   Optimize search? → isDone() = true when found
- *   Safe removal? → it.remove()
+ * Custom control? → Iterator
+ * Same operation? → Visitor
+ * Optimize search? → isDone() = true when found
+ * Safe removal? → it.remove()
  * 
  * Remember:
- *   Container closed, extended by visitors
- *   Iterator controls flow, Visitor doesn't
- *   State in instance variables, not local
+ * Container closed, extended by visitors
+ * Iterator controls flow, Visitor doesn't
+ * State in instance variables, not local
  * 
  * Performance:
- *   Multiple visitors = O(kn) where k = number of operations
- *   Composite visitor = O(n) regardless of k
- *   Early exit = massive speedup for large datasets
+ * Multiple visitors = O(kn) where k = number of operations
+ * Composite visitor = O(n) regardless of k
+ * Early exit = massive speedup for large datasets
  */
 
 public class FinalRevision {
